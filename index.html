@@ -1,0 +1,104 @@
+<html>
+
+<head>
+    <title> TEST </title>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
+    <link href="css/jquery.circliful.css" rel="stylesheet" type="text/css" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="js/jquery.circliful.js"></script>
+    <script type="text/javascript" src="farbtastic.js"></script>
+
+
+    <script src="js/jquery.myProgress.js"></script>
+    <link rel="stylesheet" href="farbtastic.css" type="text/css" />
+    <link rel="stylesheet" href="css/myProgress.css">
+    <style>
+    body {
+        font-family: arial, verdana, sans-serif;
+        font-size: 12px;
+    }
+    </style>
+</head>
+
+<body>
+    <h1>RGB_LED on Web</h1>
+    <div id="demo" style="color: red; font-size: 1.4em">jQuery.js is not present. You must install jQuery in this folder for the demo to work.</div>
+    <form action="" style="width: 400px;">
+        <div class="form-item">
+            <label for="color">Color:</label>
+            <input type="text" id="color" name="color" value="#24f5a3" />
+        </div>
+        <div id="picker"></div>
+        <input id="btn" type="button" name="btn" value="Submit"></input>
+    </form>
+    <center>
+        <div id="myStat2" data-dimension="250" data-text="78%" data-info="Humanity" data-width="30" data-fontsize="38" data-percent="78" data-fgcolor="#61a9dc" data-bgcolor="#eee"></div>
+        <div style="font-size:2em"><br/>Humanity:78%<br/>Temperature:25`C</div>
+    </center>
+    <div class="progress-out" id="div2">
+
+    	<div class="percent-show"><span>0</span>%</div>
+    	<div class="progress-in"></div>
+	</div>
+    <script type="text/javascript" charset="utf-8">
+    $(document).ready(function() {
+
+        $('#myStat2').circliful();
+
+        $("#div2").myProgress({speed: 1000, percent: 70});
+        $('#demo').hide();
+        $('#picker').farbtastic('#color');
+        $('#btn').click(sub);
+        $('.meau').hover(function() {
+            $(this).css({
+                "color": "orange",
+            });
+
+        }, function() {
+            $(this).css({
+                "color": "black",
+            });
+        });
+
+
+        $('.meau').click(function() {
+            $('.meau').css({
+                "width": "125px",
+                "padding": "10px 0",
+                "border": "",
+            });
+
+            $(this).css({
+                "border": "1px solid rgba(68,92,229,1.00)",
+                "color": "black",
+                "width": "123px",
+                "padding": "9px 0"
+
+            });
+
+        })
+
+    });
+
+    function sub() {
+        //this.value="Waiting...";
+        //	this.disabled = "disabled";
+
+        var colorValue = $('#color').val().slice(1, 7);
+
+
+        var jqxhr = $.get('/color', colorValue);
+        //.done(function(){ $("#btn").attr("disabled", false); 
+
+
+
+
+
+
+    }
+    </script>
+    </div>
+</body>
+
+</html>
